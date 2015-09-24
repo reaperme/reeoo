@@ -13,11 +13,11 @@
 <meta property="og:url" content="http://reeoo.co/archives/BrowserSync.html">
 <meta property="og:site_name" content="Reeoo's Blog">
 <meta property="og:description" content="BrowserSync是一个同步多浏览器页面测试工具。有了它，你在IDE里面修改完文件，页面就会同步刷新，你再也不需要手动去按F5刷新啦~">
-<meta property="og:image" content="http://reeooco.b0.upaiyun.com/BrowserSync/3.png">
-<meta property="og:image" content="http://reeooco.b0.upaiyun.com/BrowserSync/4.gif">
-<meta property="og:image" content="http://reeooco.b0.upaiyun.com/BrowserSync/browsersync-option.png">
-<meta property="og:image" content="http://reeooco.b0.upaiyun.com/BrowserSync/onoff.png">
-<meta property="og:updated_time" content="2015-09-24T15:45:21.462Z">
+<meta property="og:image" content="http://reeooco.b0.upaiyun.com/browserSync/3.png">
+<meta property="og:image" content="http://reeooco.b0.upaiyun.com/browserSync/4.gif">
+<meta property="og:image" content="http://reeooco.b0.upaiyun.com/browserSync/browsersync-option.png">
+<meta property="og:image" content="http://reeooco.b0.upaiyun.com/browserSync/onoff.png">
+<meta property="og:updated_time" content="2015-09-24T15:57:26.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BrowserSync前端测试利器">
 <meta name="twitter:description" content="BrowserSync是一个同步多浏览器页面测试工具。有了它，你在IDE里面修改完文件，页面就会同步刷新，你再也不需要手动去按F5刷新啦~">
@@ -244,7 +244,7 @@
 <p> 这个命令后面的<code>--files &quot;css/*.css&quot;</code>是指监听<code>css</code>目录中的后缀名为<code>.css</code>的文件。请注意这个命令里的<code>start --server</code><br> 这其实是<code>BrowserSync</code>自己启动了一个小型静态服务器。</p>
 </li>
 </ol>
-<p>OK,是不是真的只需要一分钟（被墙的时间除外哦~）？，你的<code>BrowserSync</code>就欢快的跑起来了，<code>BrowserSync</code>启动的时候会自动启动自带的静态的服务器,通过这个服务器来访问网页，可以看到这个提示：<br><img src="http://reeooco.b0.upaiyun.com/BrowserSync/3.png" alt="reeoo.co"><br>也正式因为这个静态的服务器的存在，<code>BrowserSync</code>不需要安装任何的浏览器插件，就可以处理项目文件，不像<code>livereload</code>，必须要安装浏览器插件，强烈建议使用<code>livereload</code>的伙伴，放弃它，拥抱<code>BrowserSync</code>吧~</p>
+<p>OK,是不是真的只需要一分钟（被墙的时间除外哦~）？，你的<code>BrowserSync</code>就欢快的跑起来了，<code>BrowserSync</code>启动的时候会自动启动自带的静态的服务器,通过这个服务器来访问网页，可以看到这个提示：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/3.png" alt="reeoo.co"><br>也正式因为这个静态的服务器的存在，<code>BrowserSync</code>不需要安装任何的浏览器插件，就可以处理项目文件，不像<code>livereload</code>，必须要安装浏览器插件，强烈建议使用<code>livereload</code>的伙伴，放弃它，拥抱<code>BrowserSync</code>吧~</p>
 <h1 id="基本原理">基本原理</h1><p>当网页已连接到BrowserSync的时候，我们可以查看一下源码，会发现它们都被添加了与<code>BrowserSync</code>有关的一段<code>&lt;script&gt;</code>代码，就像<code>liveReload</code>浏览器插件做的那样。这些代码会在浏览器和<code>BrowserSync</code>的服务器之间建立<code>web socket</code>连接，一旦有监听的文件发生变化，<code>BrowserSync</code>会通知浏览器。</p>
 <p>如果发生变化的文件是<code>css</code>，<code>BrowserSync</code>不会刷新整页，而是直接重新请求这个<code>css</code>文件，并更新到当前页中。</p>
 <h1 id="多文件监听">多文件监听</h1><p><code>BrowserSync</code>通过<code>--files</code>指定需要监听的文件,在做项目的时候，我们不可能之监听一种文件，那样效率会很低，如果想同时监听整个项目文件的变化，那么可以使用下面的命令：</p>
@@ -255,9 +255,9 @@
 <h1 id="高级用法">高级用法</h1><p>在控制台里尝试输入：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">browser-sync </span>init</span><br></pre></td></tr></table></figure></p>
 <p>回车，然后你会发现，当前目录多了一个bs-config.js文件，这个是<code>BrowserSync</code>的配置文件。有关<code>BrowserSync</code>的所有运行配置都在这个里面，我们可以参考<a href="http://www.browsersync.io/docs/options/" target="_blank" rel="external">官方给出的文档</a>进行修改，然后以这个配置文件来运行<code>BrowserSync</code>：</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">browser-sync </span>start --config <span class="keyword">bs-config </span>.js</span><br></pre></td></tr></table></figure>
-<h1 id="除了自动刷新，还有啥">除了自动刷新，还有啥</h1><p>第一次使用<code>BrowserSync</code>的时候，链接上<code>BrowserSync</code>的服务器之后就把页面发给了UI设计师，让他们去做<code>UI</code>验收工作，他们走后，我发现我的网页会莫名奇妙的自动上下滚动，还有一些按钮被自动点击，很诡异，后来发下，这原来也是<code>BrowserSync</code>捣的鬼，<br>BrowserSync除了自动刷新，默认配置下，<code>BrowserSync</code>会在打开你当前网页的所有浏览器中同步滚动条位置，表单行为和点击事件。有关表单行为的情形大概像酱紫：<br><img src="http://reeooco.b0.upaiyun.com/BrowserSync/4.gif" alt="reeoo.co"></p>
+<h1 id="除了自动刷新，还有啥">除了自动刷新，还有啥</h1><p>第一次使用<code>BrowserSync</code>的时候，链接上<code>BrowserSync</code>的服务器之后就把页面发给了UI设计师，让他们去做<code>UI</code>验收工作，他们走后，我发现我的网页会莫名奇妙的自动上下滚动，还有一些按钮被自动点击，很诡异，后来发下，这原来也是<code>BrowserSync</code>捣的鬼，<br>BrowserSync除了自动刷新，默认配置下，<code>BrowserSync</code>会在打开你当前网页的所有浏览器中同步滚动条位置，表单行为和点击事件。有关表单行为的情形大概像酱紫：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/4.gif" alt="reeoo.co"></p>
 <p>这虽然是一个很酷的功能，BUT，有时候会影响我们自己的操作，如果你不像被影响，可以把这个功能关掉。怎么关呢，请继续往下看咯~</p>
-<h1 id="UI界面">UI界面</h1><p><code>BrowserSync</code>自带一个UI控制面板，UI控制面板的地址跟静态服务器的地址一样，只是端口号比静态服务器的端口号大1(默认情况下，是这样)，大概看一下UI控制面板的样子：<br><img src="http://reeooco.b0.upaiyun.com/BrowserSync/browsersync-option.png" alt="reeoo.co"><br>在上面这个图里面有这么一个东西：<br><img src="http://reeooco.b0.upaiyun.com/BrowserSync/onoff.png" alt="reeoo.co"><br>从上到下依次是控制按钮的点击、窗口的滚动、表单的提交、表单输入域的输入、单选多选按钮的Check是否开启同步的开关，如果不想开启这些功能的同步，可以直接把前面的开关关掉，就不会再收到别人的影响了。<br>这个UI控制面板里面还有一些其它的东西，就不一一列表了，有兴趣的同学，可以自己折腾一下~</p>
+<h1 id="UI界面">UI界面</h1><p><code>BrowserSync</code>自带一个UI控制面板，UI控制面板的地址跟静态服务器的地址一样，只是端口号比静态服务器的端口号大1(默认情况下，是这样)，大概看一下UI控制面板的样子：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/browsersync-option.png" alt="reeoo.co"><br>在上面这个图里面有这么一个东西：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/onoff.png" alt="reeoo.co"><br>从上到下依次是控制按钮的点击、窗口的滚动、表单的提交、表单输入域的输入、单选多选按钮的Check是否开启同步的开关，如果不想开启这些功能的同步，可以直接把前面的开关关掉，就不会再收到别人的影响了。<br>这个UI控制面板里面还有一些其它的东西，就不一一列表了，有兴趣的同学，可以自己折腾一下~</p>
 <h1 id="总结">总结</h1><p>所谓工欲善其事必先利其器，有了<code>BrowserSync</code>，能节约一点时间是一点时间，时间长了，单身狗就可以腾出收来去月妹子啦~啦啦啦~</p>
 
       
