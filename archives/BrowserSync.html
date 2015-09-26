@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://reeooco.b0.upaiyun.com/browserSync/4.gif">
 <meta property="og:image" content="http://reeooco.b0.upaiyun.com/browserSync/browsersync-option.png">
 <meta property="og:image" content="http://reeooco.b0.upaiyun.com/browserSync/onoff.png">
-<meta property="og:updated_time" content="2015-09-24T16:02:59.048Z">
+<meta property="og:updated_time" content="2015-09-26T06:29:22.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BrowserSync前端测试利器">
 <meta name="twitter:description" content="BrowserSync是一个同步多浏览器页面测试工具。有了它，你在IDE里面修改完文件，页面就会同步刷新，你再也不需要手动去按F5刷新啦~">
@@ -233,7 +233,7 @@
 		<!---->
       
         <p><a href="http://www.browsersync.io/" target="_blank" rel="external"><code>BrowserSync</code></a>是一个同步多浏览器页面测试工具。有了它，你在<code>IDE</code>里面修改完文件，页面就会同步刷新，你再也不需要手动去按F5刷新啦~<br><a id="more"></a></p>
-<h1 id="适用场景">适用场景</h1><p>在做<code>Hybrid</code>项目的时候，因为测试需要，桌子上可能会同时放几台测试机，同时进行兼容性测试，再加上PC电脑，一堆设备摆在你的面前，你每在IDE改一个东西，就要去挨个设备刷新网页，这不是很<code>low</code>吗？在人类文明高度发达的今天，这种事情怎么能忍呢？<br>这时候，<code>BrowserSync</code>就应该登场了，只要所有链接到<code>BrowserSync</code>的网页，对应的源码被修改，并保存，那么，这些网页就会被自动刷新，再也不需要你一个一个刷新了。</p>
+<h1 id="适用场景">适用场景</h1><p>在做<code>Hybrid</code>项目的时候，因为测试需要，桌子上可能会同时放几台测试机，同时进行兼容性测试，再加上PC电脑，一堆设备摆在你的面前，你每在IDE改一个东西，就要去挨个设备刷新网页，这不是很<code>low</code>吗？在人类文明高度发达的今天，这种事情怎么能忍呢？这时候，<code>BrowserSync</code>就应该登场了，只要所有链接到<code>BrowserSync</code>的网页，对应的源码被修改，并保存，那么，这些网页就会被自动刷新，再也不需要你一个一个刷新了。</p>
 <h1 id="1分钟上手">1分钟上手</h1><ol>
 <li>安装<code>nodeJs</code></li>
 <li><p>安装<code>BrowserSync</code></p>
@@ -244,19 +244,19 @@
 <p> 这个命令后面的<code>--files &quot;css/*.css&quot;</code>是指监听<code>css</code>目录中的后缀名为<code>.css</code>的文件。请注意这个命令里的<code>start --server</code><br> 这其实是<code>BrowserSync</code>自己启动了一个小型静态服务器。</p>
 </li>
 </ol>
-<p>OK,是不是真的只需要一分钟（被墙的时间除外哦~）？，你的<code>BrowserSync</code>就欢快的跑起来了，<code>BrowserSync</code>启动的时候会自动启动自带的静态的服务器,通过这个服务器来访问网页，可以看到这个提示：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/3.png" alt="reeoo.co"><br>也正式因为这个静态的服务器的存在，<code>BrowserSync</code>不需要安装任何的浏览器插件，就可以处理项目文件，不像<code>livereload</code>，必须要安装浏览器插件，强烈建议使用<code>livereload</code>的伙伴，放弃它，拥抱<code>BrowserSync</code>吧~</p>
+<p>OK,是不是真的只需要一分钟（除去安装的时候，被墙翻墙的时间）？，你的<code>BrowserSync</code>就欢快的跑起来了，<code>BrowserSync</code>启动的时候会自动启动自带的静态的服务器,通过这个服务器来访问网页，可以看到这个提示：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/3.png" alt="reeoo.co"><br>也正式因为这个静态的服务器的存在，<code>BrowserSync</code>不需要安装任何的浏览器插件，就可以处理项目文件，不像<code>livereload</code>，必须要安装浏览器插件，强烈建议使用<code>livereload</code>的伙伴，放弃它，拥抱<code>BrowserSync</code>吧~</p>
 <h1 id="基本原理">基本原理</h1><p>当网页已连接到BrowserSync的时候，我们可以查看一下源码，会发现它们都被添加了与<code>BrowserSync</code>有关的一段<code>&lt;script&gt;</code>代码，就像<code>liveReload</code>浏览器插件做的那样。这些代码会在浏览器和<code>BrowserSync</code>的服务器之间建立<code>web socket</code>连接，一旦有监听的文件发生变化，<code>BrowserSync</code>会通知浏览器。</p>
 <p>如果发生变化的文件是<code>css</code>，<code>BrowserSync</code>不会刷新整页，而是直接重新请求这个<code>css</code>文件，并更新到当前页中。</p>
-<h1 id="多文件监听">多文件监听</h1><p><code>BrowserSync</code>通过<code>--files</code>指定需要监听的文件,在做项目的时候，我们不可能之监听一种文件，那样效率会很低，如果想同时监听整个项目文件的变化，那么可以使用下面的命令：</p>
+<h1 id="多文件监听">多文件监听</h1><p><code>BrowserSync</code>通过<code>--files</code>指定需要监听的文件,在做项目的时候，我们不可能只监听一种文件，那样效率会很低，如果想同时监听整个项目文件的变化，那么可以使用下面的命令：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ browser-<span class="keyword">sync</span> start --server  --<span class="keyword">files</span> <span class="string">"**"</span></span><br></pre></td></tr></table></figure>
 <p><code>**</code>代表监听当前目录下的所有文件的变化，我们只需要在项目根目录开启<code>BrowserSync</code>即可监听整个项目，当然，<code>BrowserSync</code>仍然会正确地判断文件变化是否是css。</p>
 <h1 id="整合到Gulp构建流程中">整合到<code>Gulp</code>构建流程中</h1><p><code>Gulp</code>是现在前端比较流行的自动化构建工具了（具体的用法可以看我的另一片文章，<a href="http://www.reeoo.co/archives/gulpjs.html" target="_blank" rel="external">Gulp简易入坑</a>），<code>Gulp</code>基于插件来做构建，但是<code>BrowserSync</code>并没有提供<code>Gulp</code>的插件版本，即使是这样，我们也可以在<code>Gulp</code>环境中来使用它，只需要把<code>BrowserSync</code>作为<code>node</code>的一个模块<code>require</code>进来，就可以调用其相关的<code>API</code>：下面是一段<code>gulpfile.js</code>的示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> BrowserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>);<span class="comment">//引入模块</span></span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'browser-sync'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//注册任务</span></span><br><span class="line">    BrowserSync(&#123;<span class="comment">//调用API</span></span><br><span class="line">        files: <span class="string">"**"</span>,<span class="comment">//监听整个项目</span></span><br><span class="line">        server: &#123;</span><br><span class="line">            baseDir: <span class="string">"./"</span>监听当前路径</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">"browser-sync"</span>]);</span><br></pre></td></tr></table></figure></p>
 <p>然后在命令行中运行<code>Gulp</code>这个任务，即可实现和<code>browser-sync start --server --files &quot;**&quot;</code>一样的功能。</p>
 <h1 id="高级用法">高级用法</h1><p>在控制台里尝试输入：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">browser-sync </span>init</span><br></pre></td></tr></table></figure></p>
-<p>回车，然后你会发现，当前目录多了一个bs-config.js文件，这个是<code>BrowserSync</code>的配置文件。有关<code>BrowserSync</code>的所有运行配置都在这个里面，我们可以参考<a href="http://www.browsersync.io/docs/options/" target="_blank" rel="external">官方给出的文档</a>进行修改，然后以这个配置文件来运行<code>BrowserSync</code>：</p>
+<p>回车，然后你会发现，当前目录多了一个<code>bs-config.js</code>文件，这个是<code>BrowserSync</code>的配置文件。有关<code>BrowserSync</code>的所有运行配置都在这个里面，我们可以参考官方给出的<a href="http://www.browsersync.io/docs/options/" target="_blank" rel="external">文档</a>进行修改，然后以这个配置文件来运行<code>BrowserSync</code>：</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">browser-sync </span>start --config <span class="keyword">bs-config </span>.js</span><br></pre></td></tr></table></figure>
 <h1 id="除了自动刷新，还有啥">除了自动刷新，还有啥</h1><p>第一次使用<code>BrowserSync</code>的时候，链接上<code>BrowserSync</code>的服务器之后就把页面发给了UI设计师，让他们去做<code>UI</code>验收工作，他们走后，我发现我的网页会莫名奇妙的自动上下滚动，还有一些按钮被自动点击，很诡异，后来发下，这原来也是<code>BrowserSync</code>捣的鬼，<br>BrowserSync除了自动刷新，默认配置下，<code>BrowserSync</code>会在打开你当前网页的所有浏览器中同步滚动条位置，表单行为和点击事件。有关表单行为的情形大概像酱紫：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/4.gif" alt="reeoo.co"></p>
-<p>这虽然是一个很酷的功能，BUT，有时候会影响我们自己的操作，如果你不像被影响，可以把这个功能关掉。怎么关呢，请继续往下看咯~</p>
+<p>这虽然是一个很酷的功能，BUT，有时候会影响我们自己的操作，如果你不想被影响，可以把这个功能关掉。怎么关呢，请继续往下看咯~</p>
 <h1 id="UI界面">UI界面</h1><p><code>BrowserSync</code>自带一个UI控制面板，UI控制面板的地址跟静态服务器的地址一样，只是端口号比静态服务器的端口号大1(默认情况下，是这样)，大概看一下UI控制面板的样子：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/browsersync-option.png" alt="reeoo.co"><br>在上面这个图里面有这么一个东西：<br><img src="http://reeooco.b0.upaiyun.com/browserSync/onoff.png" alt="reeoo.co"><br>从上到下依次是控制按钮的点击、窗口的滚动、表单的提交、表单输入域的输入、单选多选按钮的Check是否开启同步的开关，如果不想开启这些功能的同步，可以直接把前面的开关关掉，就不会再收到别人的影响了。<br>这个UI控制面板里面还有一些其它的东西，就不一一列表了，有兴趣的同学，可以自己折腾一下~</p>
 <h1 id="总结">总结</h1><p>所谓工欲善其事必先利其器，有了<code>BrowserSync</code>，能节约一点时间是一点时间，时间长了，单身狗就可以腾出手来去约妹子啦~啦啦啦~</p>
 
