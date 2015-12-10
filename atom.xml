@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Hello, I'm Reeoo]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://reeoo.co/"/>
-  <updated>2015-11-11T13:07:02.364Z</updated>
+  <updated>2015-10-11T12:11:44.653Z</updated>
   <id>http://reeoo.co/</id>
   
   <author>
@@ -13,25 +13,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[关于Javascript中的AO/VO]]></title>
-    <link href="http://reeoo.co/archives/about-ao-vo.html"/>
-    <id>http://reeoo.co/archives/about-ao-vo.html</id>
-    <published>2015-11-11T13:58:59.000Z</published>
-    <updated>2015-11-11T13:07:02.364Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="AO" scheme="http://reeoo.co/tags/AO/"/>
-    
-      <category term="VO" scheme="http://reeoo.co/tags/VO/"/>
-    
-      <category term="javascript" scheme="http://reeoo.co/categories/javascript/"/>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[移动Web常用知识收集]]></title>
