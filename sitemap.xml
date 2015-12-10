@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://reeoo.co/archives/AboutHexo.html</loc>
+    <lastmod>2015-12-10T12:37:23.986Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://reeoo.co/archives/gulpjs.html</loc>
+    <lastmod>2015-12-10T12:37:07.640Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://reeoo.co/archives/regular-expression.html</loc>
+    <lastmod>2015-12-10T12:34:32.314Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://reeoo.co/archives/about-ao-vo.html</loc>
+    <lastmod>2015-11-11T13:07:02.364Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://reeoo.co/archives/mobileweb.html</loc>
     <lastmod>2015-10-11T12:11:44.653Z</lastmod>
   </url>
@@ -17,23 +37,8 @@
   </url>
   
   <url>
-    <loc>http://reeoo.co/archives/regular-expression.html</loc>
-    <lastmod>2015-09-04T05:04:49.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://reeoo.co/archives/gulpjs.html</loc>
-    <lastmod>2015-09-04T05:04:14.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://reeoo.co/archives/ssh-login-ignore-known-hosts.html</loc>
     <lastmod>2015-08-23T15:31:19.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://reeoo.co/archives/AboutHexo.html</loc>
-    <lastmod>2015-07-03T05:56:19.000Z</lastmod>
   </url>
   
 </urlset>
