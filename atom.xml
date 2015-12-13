@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Hello, I'm Reeoo]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://reeoo.co/"/>
-  <updated>2015-12-13T13:54:57.547Z</updated>
+  <updated>2015-12-13T14:10:21.238Z</updated>
   <id>http://reeoo.co/</id>
   
   <author>
@@ -19,11 +19,11 @@
     <link href="http://reeoo.co/archives/Object-and-Function.html"/>
     <id>http://reeoo.co/archives/Object-and-Function.html</id>
     <published>2015-12-13T13:58:59.000Z</published>
-    <updated>2015-12-13T13:54:57.547Z</updated>
+    <updated>2015-12-13T14:10:21.238Z</updated>
     <content type="html"><![CDATA[<p>看到这样一道题目：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br></pre></td></tr></table></figure></p>
 <p><code>f.a</code>和<code>f.b</code>各是多少？为什么？<br><a id="more"></a></p>
 <blockquote>
-<p>乍一看有点懵，赶紧补一下，压压惊</p>
+<p>乍一看有点懵，赶紧百度一下，找点干货，压压惊</p>
 </blockquote>
 <h1 id="原型">原型</h1><p>在说Function和Object之前，先来说说<code>原型</code></p>
 <ol>
