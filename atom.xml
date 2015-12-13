@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Hello, I'm Reeoo]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://reeoo.co/"/>
-  <updated>2015-10-11T12:11:44.653Z</updated>
+  <updated>2015-12-13T13:54:57.547Z</updated>
   <id>http://reeoo.co/</id>
   
   <author>
@@ -13,6 +13,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Object和Function那点破事]]></title>
+    <link href="http://reeoo.co/archives/Object-and-Function.html"/>
+    <id>http://reeoo.co/archives/Object-and-Function.html</id>
+    <published>2015-12-13T13:58:59.000Z</published>
+    <updated>2015-12-13T13:54:57.547Z</updated>
+    <content type="html"><![CDATA[<p>看到这样一道题目：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br></pre></td></tr></table></figure></p>
+<p><code>f.a</code>和<code>f.b</code>各是多少？为什么？<br><a id="more"></a></p>
+<blockquote>
+<p>乍一看有点懵，赶紧补一下，压压惊</p>
+</blockquote>
+<h1 id="原型">原型</h1><p>在说Function和Object之前，先来说说<code>原型</code></p>
+<ol>
+<li>在创建一个函数的时候，会自动为其创建一个原型对象，可以通过函数的<code>prototype</code>属性访问到。</li>
+<li>创建一个构造函数的实例对象，该实例对象内部将包含一个指针(<code>__proto__</code>)，用于访问其构造函数的原型对象。</li>
+</ol>
+<p>简单来说：<br>构造函数通过 <code>prototype</code> 属性访问原型对象。<br>实例对象通过 <code>__proto__</code> 内部属性访问原型对象，浏览器实现了 <code>_proto_</code>属性用于实例对象访问原型对象。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br><span class="line"><span class="comment">// 假设F的原型对象是 p, 则</span></span><br><span class="line"><span class="comment">// F.prototype === p;</span></span><br><span class="line"><span class="comment">// f.__proto__ === p;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>prototype</code>说的是构造函数和原型对象之间的关系，<code>__proto__</code>说的是实例对象和原型对象之间的关系</p>
+<h1 id="原型链">原型链</h1><p>其次再来说说原型链<br>类 <code>A</code>继承<code>B</code>，<code>B</code>继承<code>C</code>……其实就是<code>A</code>的原型对象中有指针指向<code>B</code>的原型对象，而<code>B</code>的原型对象中有指针指向<code>C</code>的原型对象……注意是原型对象之间的联系，<code>A B C</code> 这三个构造函数之间并没什么关系</p>
+<p>假设<code>a</code>是<code>A</code>的实例对象，则 <code>a</code> 的原型链为下图中紫色线条所示，橙色线条连接了构造函数和其原型对象。</p>
+<p><img src="http://reeooco.b0.upaiyun.com/yx/prototype_1.png" alt="reeoo.co"></p>
+<p>由图可以看出，原型链的末端是<code>Object.prototype.__proto__</code>即<code>null</code>。当查找<code>a</code>的某个属性或方法时，首先查找<code>a</code>自身有没有，没有则沿着原型链一直查找，直到找到或者最后到<code>null</code>返回<code>undefined</code>。</p>
+<h1 id="Function和Object"><code>Function</code>和<code>Object</code></h1><p>最后来说明<code>Function</code>和<code>Object</code>的关系，<code>Function</code> 和 <code>Object</code> 之间的关系有点绕：</p>
+<ol>
+<li><code>Object</code>是构造函数，既然是函数，那么就是<code>Function</code>的实例对象；</li>
+<li><code>Function</code>是构造函数，但<code>Function.prototype</code>是对象，既然是对象，那么就是<code>Object</code>的实例对象。</li>
+<li>一切对象都是<code>Object</code>的实例，一切函数都是<code>Function</code>的实例。<code>Object</code>是<code>Function</code>的实例，而<code>Function.prototype</code>是<code>Object</code>的实例。</li>
+</ol>
+<p>二者的关系如下图所示。</p>
+<p><img src="http://reeooco.b0.upaiyun.com/yx/prototype_2.png" alt="reeoo.co"></p>
+<p>可见，<code>Object</code>作为构造函数，它有 <code>prototype</code> 属性指向 <code>Object.prototype</code> , 作为实例对象， 它有 <code>Object.__proto__</code> 指向<code>Function.prototype</code>。<code>Function</code>是构造函数，它有<code>prototype</code>属性指向<code>Function.prototype</code>，而<code>Function</code>是函数，从而也是<code>Function</code>的实例，所以它有<code>Function.__proto__</code>指向<code>Function.prototype</code>，从而 <code>Function.__proto__ === Function.prototype</code> 为 <code>true</code>。</p>
+<p>假如我们有以下例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;&#125;,</span><br><span class="line">   F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="string">'value a'</span>;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="string">'value b'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo.a)    <span class="comment">// value a</span></span><br><span class="line"><span class="built_in">console</span>.log(foo.b)    <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(F.a)      <span class="comment">// value a</span></span><br><span class="line"><span class="built_in">console</span>.log(F.b)      <span class="comment">// value b</span></span><br></pre></td></tr></table></figure></p>
+<p>那么</p>
+<p><code>foo.a</code>的查找路径: <code>foo</code>自身: 没有 —&gt; <code>foo.__proto__(Object.prototype)</code>: 找到<code>value a</code><br><code>foo.b</code>的查找路径: <code>foo</code>自身: 没有 —&gt; <code>foo.__proto__(Object.prototype)</code>: 没有 —&gt; <code>foo.__proto__.__proto__ (Object.prototype.__proto__)</code>: 没有<br><code>F.a</code>的查找路径: <code>F</code>自身: 没有 —&gt; <code>F.__proto__(Function.prototype)</code>: 没有 —&gt; <code>F.__proto__.__proto__(Object.prototype)</code>: 找到<code>value a</code><br><code>F.b</code>的查找路径: <code>F</code>自身: 没有 —&gt; <code>F.__proto__(Function.prototype)</code>: 找到<code>value b</code></p>
+<h1 id="关于instanceof">关于<code>instanceof</code></h1><p>关于<code>instanceof</code>它的计算规则是: 如果右侧构造函数的<code>prototype</code>属性能在左侧的对象的原型链中找到, 那么就返回<code>true</code>, 否则就返回<code>false</code></p>
+<p><code>Object intanceof Function: Object.__proto__ === Function.prototype</code>, 所以结果为<code>true</code><br><code>Function instanceof Object: Function.__proto__.__proto__ === Object.prototype</code>, 所以结果也为<code>true</code></p>
+<p>实例对象的<code>constructor</code>属性指向其构造函数, 因此<code>Object.constructor === Function</code>, <code>Function.constructor === Function</code>。</p>
+<h1 id="关于原题">关于原题</h1><p>解决原型链问题最好的办法就是画图了，经过前面的分析，这个图画起来应该不成问题，如下~<br><img src="http://reeooco.b0.upaiyun.com/yx/p3.png" alt="reeoo.co"></p>
+<p>f 的原型链为蓝色线所画，所以 <code>f</code> 可以访问到 <code>a</code> , 不能访问到 <code>b</code> 。</p>
+<h1 id="总结">总结</h1><ol>
+<li>有没有发现函数一个比较特殊的地方？<br>一般的对象，只有一个    <code>__proto__</code>属性用于访问其构造函数的原型对象，而对于函数来说，它既是函数又是对象。<br>作为函数，它生来就有<code>prototype</code>属性指向其原型对象<code>函数名.prototype</code>。<br>作为<code>Function</code>的<code>实例对象</code>，它有<code>__proto__</code>属性指向<code>Function.prototype</code><br>通常，这两个属性是指向两个对象的，但<code>Function</code>的这两个属性指向相同，都指向<code>Function.prototype</code>。</li>
+<li>对于函数 <code>A( )</code> 来说，<code>A.prototype</code> 中的方法是供其实例对象调用的，自己并不会用；当<code>A</code> 作为实例运行时，调用的是 <code>A.__proto__</code>中的方法。也就是说，作为构造函数使用时，走的是<code>A.prototype</code>这条链，方法、属性赋给其实例；作为实例使用时，走的是<code>A.__proto__</code>这条链。在不同的场景下，分清它的身份就不会错了。</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>看到这样一道题目：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br></pre></td></tr></table></figure></p>
+<p><code>f.a</code>和<code>f.b</code>各是多少？为什么？<br>]]>
+    
+    </summary>
+    
+      <category term="原型链" scheme="http://reeoo.co/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    
+      <category term="javascript" scheme="http://reeoo.co/categories/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[移动Web常用知识收集]]></title>

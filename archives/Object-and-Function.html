@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="7Id75D7BP2" />
+  <meta name="baidu_union_verify" content="3d4a8e490f086a4deb5c4f1b03c65138">
+  
+  <title>Object和Function那点破事 | Reeoo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="看到这样一道题目：1234var F = function()&amp;#123;&amp;#125;;Object.prototype.a = function()&amp;#123;&amp;#125;;Function.prototype.b = function()&amp;#123;&amp;#125;;var f = new F();
+f.a和f.b各是多少？为什么？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object和Function那点破事">
+<meta property="og:url" content="http://reeoo.co/archives/Object-and-Function.html">
+<meta property="og:site_name" content="Reeoo's Blog">
+<meta property="og:description" content="看到这样一道题目：1234var F = function()&amp;#123;&amp;#125;;Object.prototype.a = function()&amp;#123;&amp;#125;;Function.prototype.b = function()&amp;#123;&amp;#125;;var f = new F();
+f.a和f.b各是多少？为什么？">
+<meta property="og:image" content="http://reeooco.b0.upaiyun.com/yx/prototype_1.png">
+<meta property="og:image" content="http://reeooco.b0.upaiyun.com/yx/prototype_2.png">
+<meta property="og:image" content="http://reeooco.b0.upaiyun.com/yx/p3.png">
+<meta property="og:updated_time" content="2015-12-13T13:54:57.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Object和Function那点破事">
+<meta name="twitter:description" content="看到这样一道题目：1234var F = function()&amp;#123;&amp;#125;;Object.prototype.a = function()&amp;#123;&amp;#125;;Function.prototype.b = function()&amp;#123;&amp;#125;;var f = new F();
+f.a和f.b各是多少？为什么？">
+  
+    <link rel="alternative" href="/atom.xml" title="Reeoo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://reeooco.b0.upaiyun.com/common/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1eddc2697aa0eecd2468d62ba9e7b27a";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="http://reeooco.b0.upaiyun.com/avatar/nick.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Reeoo</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Hello, I&#39;m Reeoo</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://github.com/ireeoo" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/ijandc" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:ireeoo@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/BrowserSync/" style="font-size: 10px;">BrowserSync</a> <a href="/tags/Compass/" style="font-size: 10px;">Compass</a> <a href="/tags/WebStorm/" style="font-size: 10px;">WebStorm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gulpjs/" style="font-size: 10px;">gulpjs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">这里貌似要写点东西，不然不是很和谐啊~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Reeoo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://reeooco.b0.upaiyun.com/avatar/nick.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Reeoo</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Hello, I&#39;m Reeoo</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/ireeoo" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ijandc" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:ireeoo@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Object-and-Function" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/archives/Object-and-Function.html" class="article-date">
+  	<time datetime="2015-12-13T13:58:59.000Z" itemprop="datePublished">2015-12-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Object和Function那点破事
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原型链/">原型链</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+		<!-- 文章目录生成 -->
+		<!---->
+		<!--<div id="toc" class="toc-article">-->
+			<!--<strong class="toc-title">文章目录</strong>-->
+			<!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#原型"><span class="toc-number">1.</span> <span class="toc-text">原型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原型链"><span class="toc-number">2.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Function和Object"><span class="toc-number">3.</span> <span class="toc-text">Function和Object</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于instanceof"><span class="toc-number">4.</span> <span class="toc-text">关于instanceof</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于原题"><span class="toc-number">5.</span> <span class="toc-text">关于原题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>-->
+		<!--</div>-->
+		<!---->
+      
+        <p>看到这样一道题目：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br></pre></td></tr></table></figure></p>
+<p><code>f.a</code>和<code>f.b</code>各是多少？为什么？<br><a id="more"></a></p>
+<blockquote>
+<p>乍一看有点懵，赶紧补一下，压压惊</p>
+</blockquote>
+<h1 id="原型">原型</h1><p>在说Function和Object之前，先来说说<code>原型</code></p>
+<ol>
+<li>在创建一个函数的时候，会自动为其创建一个原型对象，可以通过函数的<code>prototype</code>属性访问到。</li>
+<li>创建一个构造函数的实例对象，该实例对象内部将包含一个指针(<code>__proto__</code>)，用于访问其构造函数的原型对象。</li>
+</ol>
+<p>简单来说：<br>构造函数通过 <code>prototype</code> 属性访问原型对象。<br>实例对象通过 <code>__proto__</code> 内部属性访问原型对象，浏览器实现了 <code>_proto_</code>属性用于实例对象访问原型对象。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br><span class="line"><span class="comment">// 假设F的原型对象是 p, 则</span></span><br><span class="line"><span class="comment">// F.prototype === p;</span></span><br><span class="line"><span class="comment">// f.__proto__ === p;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>prototype</code>说的是构造函数和原型对象之间的关系，<code>__proto__</code>说的是实例对象和原型对象之间的关系</p>
+<h1 id="原型链">原型链</h1><p>其次再来说说原型链<br>类 <code>A</code>继承<code>B</code>，<code>B</code>继承<code>C</code>……其实就是<code>A</code>的原型对象中有指针指向<code>B</code>的原型对象，而<code>B</code>的原型对象中有指针指向<code>C</code>的原型对象……注意是原型对象之间的联系，<code>A B C</code> 这三个构造函数之间并没什么关系</p>
+<p>假设<code>a</code>是<code>A</code>的实例对象，则 <code>a</code> 的原型链为下图中紫色线条所示，橙色线条连接了构造函数和其原型对象。</p>
+<p><img src="http://reeooco.b0.upaiyun.com/yx/prototype_1.png" alt="reeoo.co"></p>
+<p>由图可以看出，原型链的末端是<code>Object.prototype.__proto__</code>即<code>null</code>。当查找<code>a</code>的某个属性或方法时，首先查找<code>a</code>自身有没有，没有则沿着原型链一直查找，直到找到或者最后到<code>null</code>返回<code>undefined</code>。</p>
+<h1 id="Function和Object"><code>Function</code>和<code>Object</code></h1><p>最后来说明<code>Function</code>和<code>Object</code>的关系，<code>Function</code> 和 <code>Object</code> 之间的关系有点绕：</p>
+<ol>
+<li><code>Object</code>是构造函数，既然是函数，那么就是<code>Function</code>的实例对象；</li>
+<li><code>Function</code>是构造函数，但<code>Function.prototype</code>是对象，既然是对象，那么就是<code>Object</code>的实例对象。</li>
+<li>一切对象都是<code>Object</code>的实例，一切函数都是<code>Function</code>的实例。<code>Object</code>是<code>Function</code>的实例，而<code>Function.prototype</code>是<code>Object</code>的实例。</li>
+</ol>
+<p>二者的关系如下图所示。</p>
+<p><img src="http://reeooco.b0.upaiyun.com/yx/prototype_2.png" alt="reeoo.co"></p>
+<p>可见，<code>Object</code>作为构造函数，它有 <code>prototype</code> 属性指向 <code>Object.prototype</code> , 作为实例对象， 它有 <code>Object.__proto__</code> 指向<code>Function.prototype</code>。<code>Function</code>是构造函数，它有<code>prototype</code>属性指向<code>Function.prototype</code>，而<code>Function</code>是函数，从而也是<code>Function</code>的实例，所以它有<code>Function.__proto__</code>指向<code>Function.prototype</code>，从而 <code>Function.__proto__ === Function.prototype</code> 为 <code>true</code>。</p>
+<p>假如我们有以下例子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;&#125;,</span><br><span class="line">   F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="string">'value a'</span>;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="string">'value b'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo.a)    <span class="comment">// value a</span></span><br><span class="line"><span class="built_in">console</span>.log(foo.b)    <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(F.a)      <span class="comment">// value a</span></span><br><span class="line"><span class="built_in">console</span>.log(F.b)      <span class="comment">// value b</span></span><br></pre></td></tr></table></figure></p>
+<p>那么</p>
+<p><code>foo.a</code>的查找路径: <code>foo</code>自身: 没有 —&gt; <code>foo.__proto__(Object.prototype)</code>: 找到<code>value a</code><br><code>foo.b</code>的查找路径: <code>foo</code>自身: 没有 —&gt; <code>foo.__proto__(Object.prototype)</code>: 没有 —&gt; <code>foo.__proto__.__proto__ (Object.prototype.__proto__)</code>: 没有<br><code>F.a</code>的查找路径: <code>F</code>自身: 没有 —&gt; <code>F.__proto__(Function.prototype)</code>: 没有 —&gt; <code>F.__proto__.__proto__(Object.prototype)</code>: 找到<code>value a</code><br><code>F.b</code>的查找路径: <code>F</code>自身: 没有 —&gt; <code>F.__proto__(Function.prototype)</code>: 找到<code>value b</code></p>
+<h1 id="关于instanceof">关于<code>instanceof</code></h1><p>关于<code>instanceof</code>它的计算规则是: 如果右侧构造函数的<code>prototype</code>属性能在左侧的对象的原型链中找到, 那么就返回<code>true</code>, 否则就返回<code>false</code></p>
+<p><code>Object intanceof Function: Object.__proto__ === Function.prototype</code>, 所以结果为<code>true</code><br><code>Function instanceof Object: Function.__proto__.__proto__ === Object.prototype</code>, 所以结果也为<code>true</code></p>
+<p>实例对象的<code>constructor</code>属性指向其构造函数, 因此<code>Object.constructor === Function</code>, <code>Function.constructor === Function</code>。</p>
+<h1 id="关于原题">关于原题</h1><p>解决原型链问题最好的办法就是画图了，经过前面的分析，这个图画起来应该不成问题，如下~<br><img src="http://reeooco.b0.upaiyun.com/yx/p3.png" alt="reeoo.co"></p>
+<p>f 的原型链为蓝色线所画，所以 <code>f</code> 可以访问到 <code>a</code> , 不能访问到 <code>b</code> 。</p>
+<h1 id="总结">总结</h1><ol>
+<li>有没有发现函数一个比较特殊的地方？<br>一般的对象，只有一个    <code>__proto__</code>属性用于访问其构造函数的原型对象，而对于函数来说，它既是函数又是对象。<br>作为函数，它生来就有<code>prototype</code>属性指向其原型对象<code>函数名.prototype</code>。<br>作为<code>Function</code>的<code>实例对象</code>，它有<code>__proto__</code>属性指向<code>Function.prototype</code><br>通常，这两个属性是指向两个对象的，但<code>Function</code>的这两个属性指向相同，都指向<code>Function.prototype</code>。</li>
+<li>对于函数 <code>A( )</code> 来说，<code>A.prototype</code> 中的方法是供其实例对象调用的，自己并不会用；当<code>A</code> 作为实例运行时，调用的是 <code>A.__proto__</code>中的方法。也就是说，作为构造函数使用时，走的是<code>A.prototype</code>这条链，方法、属性赋给其实例；作为实例使用时，走的是<code>A.__proto__</code>这条链。在不同的场景下，分清它的身份就不会错了。</li>
+</ol>
+
+      
+
+
+    </div>
+
+    
+  </div>
+
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/archives/mobileweb.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动Web常用知识收集</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Object-and-Function" data-title="Object和Function那点破事" data-url="http://reeoo.co/archives/Object-and-Function.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"reeooco"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+    <div class="foot_sponsor">
+        <a href="https://www.upyun.com/">
+            <img src="http://upfiles.b0.upaiyun.com/logo/180x90.png" style="width:90px;height: 45px;" alt="又拍云存储">
+            <em>又拍提供存储</em>
+        </a>
+        <a href="http://hexo.io">
+            <img src="http://reeooco.b0.upaiyun.com/common/hexo.svg" alt="hexo" style="width:40px;height: 40px;">
+            <em style="display: block;margin-top:5px;">hexo强力驱动</em>
+        </a>
+    </div>
+    <div class="copyright">&copy; 2015 Reeoo</div>
+    <div class="beian">土星 ICP备00000001号-1</div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<a id="totop">返回顶部</a>
+
+
+
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
