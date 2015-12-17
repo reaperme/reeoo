@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Hello, I'm Reeoo]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://reeoo.co/"/>
-  <updated>2015-12-13T14:10:21.238Z</updated>
+  <updated>2015-12-17T13:58:01.869Z</updated>
   <id>http://reeoo.co/</id>
   
   <author>
@@ -13,6 +13,153 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[git指令速查]]></title>
+    <link href="http://reeoo.co/archives/git.html"/>
+    <id>http://reeoo.co/archives/git.html</id>
+    <published>2015-12-17T14:52:59.000Z</published>
+    <updated>2015-12-17T13:58:01.869Z</updated>
+    <content type="html"><![CDATA[<p>用<code>git</code>也有一年多了，但是有些命令始终是记不住，或者是时间长不用又忘了，做个记录，方便查阅。<br><a id="more"></a></p>
+<h1 id="创建">创建</h1><ul>
+<li><p>复制一个已创建的仓库</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone <span class="string">ssh:</span>i<span class="annotation">@reeoo</span>.co/reeoo.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个新的本地仓库</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> init</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="本地修改">本地修改</h1><ul>
+<li><p>显示工作路径下全部已修改的文件</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">status</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示于上次提交版本文件的不通</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> diff</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把当前所有修改添加到下次提交中</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定某个文件的修改添加到下次提交中</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">add</span> -p &lt;<span class="built_in">file</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交本地的所有修改</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -<span class="literal">a</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交之前已标记的变化</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> commit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改上次提交（请勿修改已发布的提交记录）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">commit</span> <span class="comment">--amend</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="提交历史">提交历史</h1><ul>
+<li><p>从最新提交开始显示所有的提交记录</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="command">log</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示指定文件的所有修改</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="command">log</span> -p &lt;<span class="type">file</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>谁，在什么时间，修改了文件的什么内容</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame &lt;<span class="type">file</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="分支与标签">分支与标签</h1><ul>
+<li><p>显示所有分支</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-av</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换当前分支</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="tag">&lt;<span class="title">branch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建新分支基于当前分支</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;<span class="keyword">new</span>-branch&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建新的可追溯的分支基于远程分支</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="comment">--track &lt;remote/branch&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除本地分支</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-d &lt;<span class="keyword">branch&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给当前的提交打标签</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">tag</span> &lt;<span class="built_in">tag</span><span class="attribute">-name</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="更新与发布">更新与发布</h1><ul>
+<li><p>列出当前配置的远程端</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> remote -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示远程端信息</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show <span class="tag">&lt;<span class="title">remote</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加新的远程端</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add <span class="tag">&lt;<span class="title">shortname</span>&gt;</span> <span class="tag">&lt;<span class="title">url</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载远程端的所有改动到本地，不会自动合并到当前</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch <span class="tag">&lt;<span class="title">remote</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载远程端的所有改动到本地，自动合并到当前</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull <span class="tag">&lt;<span class="title">remote</span>&gt;</span> <span class="tag">&lt;<span class="title">branch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将本地版本发布到远程端</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push <span class="tag">&lt;<span class="title">remote</span>&gt;</span> <span class="tag">&lt;<span class="title">branch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除远程端分支</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-dr &lt;remote/<span class="keyword">branch&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布标签</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push <span class="comment">--tags</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="合并与重置">合并与重置</h1><ul>
+<li><p>将分至合并到当前</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge <span class="tag">&lt;<span class="title">branch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将当前版本重置到分支（请勿重置已发布的提交）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase <span class="tag">&lt;<span class="title">branch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出重置</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase <span class="comment">--abort</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决冲突后继续重置</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --<span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用配合好的合并工具去解决冲突</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> mergetool</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在编辑器中手动解决冲突后标记文件为以解决冲突</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">add</span> &lt;resolved-<span class="built_in">file</span>&gt;</span><br><span class="line">git rm &lt;resolved-<span class="built_in">file</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="撤销">撤销</h1><ul>
+<li><p>放弃工作目录下的所有修改</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard HEAD</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>放弃某个文件的所有本地修改</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD &lt;<span class="type">file</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置一个提交（通过创建一个截然不同的新提交）</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">revert </span>&lt;commit&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将HEAD重置到上一次提交的版本，并抛弃该版本之后的所有修改</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> <span class="comment">--hard &lt;commit&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将HEAD重置到上一次提交的版本<br>并将之后修改标记为未添加到缓存区的修改</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">reset</span> &lt;<span class="keyword">commit</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将HEAD重置到上一次提交的版本并保留未提交的本地修改</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --keep &#60;commit&#62;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>用<code>git</code>也有一年多了，但是有些命令始终是记不住，或者是时间长不用又忘了，做个记录，方便查阅。<br>]]>
+    
+    </summary>
+    
+      <category term="git" scheme="http://reeoo.co/tags/git/"/>
+    
+      <category term="webtools" scheme="http://reeoo.co/categories/webtools/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Object和Function那点破事]]></title>
