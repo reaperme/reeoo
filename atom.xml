@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Hello, I'm Reeoo]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://reeoo.co/"/>
-  <updated>2015-12-17T13:58:01.869Z</updated>
+  <updated>2015-12-17T14:15:34.703Z</updated>
   <id>http://reeoo.co/</id>
   
   <author>
@@ -19,8 +19,9 @@
     <link href="http://reeoo.co/archives/git.html"/>
     <id>http://reeoo.co/archives/git.html</id>
     <published>2015-12-17T14:52:59.000Z</published>
-    <updated>2015-12-17T13:58:01.869Z</updated>
+    <updated>2015-12-17T14:15:34.703Z</updated>
     <content type="html"><![CDATA[<p>用<code>git</code>也有一年多了，但是有些命令始终是记不住，或者是时间长不用又忘了，做个记录，方便查阅。<br><a id="more"></a></p>
+<p>/-[] AAA<br>[x] AAA<br>[x] BBB</p>
 <h1 id="创建">创建</h1><ul>
 <li><p>复制一个已创建的仓库</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone <span class="string">ssh:</span>i<span class="annotation">@reeoo</span>.co/reeoo.git</span><br></pre></td></tr></table></figure>
