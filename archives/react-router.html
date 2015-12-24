@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="7Id75D7BP2" />
+  <meta name="baidu_union_verify" content="3d4a8e490f086a4deb5c4f1b03c65138">
+  
+  <title>react-router的基本用法 | Reeoo&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概览
+本文基于React Router v1.03版本。
+
+React Router是一个为React设计的强大的路由库。可以帮助我们快速的实现路由功能，包括URL和React components之间的同步映射关系。在解释React Router如何使用之前，我们先来看看在不使用React Router的情况下，是怎么样的，接下来的所有例子中都将使用ES2015语法和语言特性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-router的基本用法">
+<meta property="og:url" content="http://reeoo.co/archives/react-router.html">
+<meta property="og:site_name" content="Reeoo's Blog">
+<meta property="og:description" content="概览
+本文基于React Router v1.03版本。
+
+React Router是一个为React设计的强大的路由库。可以帮助我们快速的实现路由功能，包括URL和React components之间的同步映射关系。在解释React Router如何使用之前，我们先来看看在不使用React Router的情况下，是怎么样的，接下来的所有例子中都将使用ES2015语法和语言特性。">
+<meta property="og:updated_time" content="2015-12-24T15:17:14.726Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-router的基本用法">
+<meta name="twitter:description" content="概览
+本文基于React Router v1.03版本。
+
+React Router是一个为React设计的强大的路由库。可以帮助我们快速的实现路由功能，包括URL和React components之间的同步映射关系。在解释React Router如何使用之前，我们先来看看在不使用React Router的情况下，是怎么样的，接下来的所有例子中都将使用ES2015语法和语言特性。">
+  
+    <link rel="alternative" href="/atom.xml" title="Reeoo&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://reeooco.b0.upaiyun.com/common/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1eddc2697aa0eecd2468d62ba9e7b27a";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="http://reeooco.b0.upaiyun.com/avatar/nick.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Reeoo</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Hello, I&#39;m Reeoo</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://github.com/ireeoo" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/ijandc" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:ireeoo@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/BrowserSync/" style="font-size: 10px;">BrowserSync</a> <a href="/tags/Compass/" style="font-size: 10px;">Compass</a> <a href="/tags/WebStorm/" style="font-size: 10px;">WebStorm</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/gulpjs/" style="font-size: 10px;">gulpjs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/react-router/" style="font-size: 10px;">react-router</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">这里貌似要写点东西，不然不是很和谐啊~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Reeoo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://reeooco.b0.upaiyun.com/avatar/nick.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Reeoo</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Hello, I&#39;m Reeoo</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/ireeoo" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ijandc" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:ireeoo@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-react-router" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/archives/react-router.html" class="article-date">
+  	<time datetime="2015-12-24T07:49:19.000Z" itemprop="datePublished">2015-12-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react-router的基本用法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-router/">react-router</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+		<!-- 文章目录生成 -->
+		<!---->
+		<!--<div id="toc" class="toc-article">-->
+			<!--<strong class="toc-title">文章目录</strong>-->
+			<!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概览"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不使用React_Router"><span class="toc-number">2.</span> <span class="toc-text">不使用React Router</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用React_Router"><span class="toc-number">3.</span> <span class="toc-text">使用React Router</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加更多的视图"><span class="toc-number">4.</span> <span class="toc-text">添加更多的视图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取参数"><span class="toc-number">5.</span> <span class="toc-text">获取参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>-->
+		<!--</div>-->
+		<!---->
+      
+        <h1 id="概览">概览</h1><blockquote>
+<p>本文基于<code>React Router v1.03</code>版本。</p>
+</blockquote>
+<p><code>React Router</code>是一个为<code>React</code>设计的强大的路由库。可以帮助我们快速的实现路由功能，包括<code>URL</code>和<code>React components</code>之间的同步映射关系。<br>在解释<code>React Router</code>如何使用之前，我们先来看看在不使用<code>React Router</code>的情况下，是怎么样的，接下来的所有例子中都将使用<code>ES2015</code>语法和语言特性。<br><a id="more"></a></p>
+<h1 id="不使用React_Router">不使用<code>React Router</code></h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"></span><br><span class="line">const About = React.createClass(&#123;/*...*/&#125;)</span><br><span class="line">const Inbox = React.createClass(&#123;/*...*/&#125;)</span><br><span class="line">const Home = React.createClass(&#123;/*...*/&#125;)</span><br><span class="line"></span><br><span class="line">const App = React.createClass(&#123;</span><br><span class="line">getInitialState() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    route: window.location.hash.substr(1)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">  window.addEventListener(<span class="string">'hashchange'</span>, () =&gt; &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      route: window.location.hash.substr(1)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">render() &#123;</span><br><span class="line">  let Child</span><br><span class="line">  switch (this.state.route) &#123;</span><br><span class="line">    case <span class="string">'/about'</span>: Child = About; <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'/inbox'</span>: Child = Inbox; <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:      Child = Home;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">h1</span>&gt;</span>App<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#/inbox"</span>&gt;</span>Inbox<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">Child</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  )</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">render(<span class="xml"><span class="tag">&lt;<span class="title">App</span> /&gt;</span>, document.body)</span></span><br></pre></td></tr></table></figure>
+<p>当<code>hash</code>值变化的时候，<code>App</code> 将会根据<code>this.state.route</code> 的值决定渲染哪个组件（<code>About</code>、<code>Index</code>、<code>Home</code>）到页面上。这样的做法虽然看起来很简单，但是也增加了复杂性。</p>
+<p>想象一下，如果组件 <code>Inbox</code> 有一些嵌套的子组件，它们的路由规则可能是这样的：<code>/inbox/message/12345</code> 或者 <code>/inbox/unread</code> 这样的，<br>上面的路由匹配规则很显然就不能满足我们的需求了，我们不得不修改之前的URL解析规则，写一堆复杂的代码来判断哪种URL应该呈现哪个组件（比如：<code>App -&gt; About, App -&gt; Inbox -&gt; Messages -&gt; Message, App -&gt; Inbox -&gt; Messages -&gt; Stats</code>）。</p>
+<h1 id="使用React_Router">使用<code>React Router</code></h1><p>首先，引入<code>React Router</code><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Router, Route, Link &#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br></pre></td></tr></table></figure></p>
+<p>把判断路由逻辑的那段代码删除，然后加入<code>Link</code>标签</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = React.createClass(&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">h1</span>&gt;</span>App<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">        &#123;/* 把`a`标签换成`Link`标签 */&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">Link</span> <span class="attribute">to</span>=<span class="value">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="title">Link</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">Link</span> <span class="attribute">to</span>=<span class="value">"/inbox"</span>&gt;</span>Inbox<span class="tag">&lt;/<span class="title">Link</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        &#123;/*</span><br><span class="line">          把`<span class="tag">&lt;<span class="title">Child</span>&gt;</span>`替换成`this.props.children`</span><br><span class="line">          路由会渲染正确的组件</span><br><span class="line">        */&#125;</span><br><span class="line">        &#123;this.props.children&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    )</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>最后引入<code>&lt;Router&gt;</code>和<code>&lt;Route&gt;</code>，由它们帮我们搞定路由。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">render((</span><br><span class="line">  <span class="tag">&lt;<span class="title">Router</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">Route</span> <span class="attribute">path</span>=<span class="value">"/"</span> <span class="attribute">component</span>=<span class="value">&#123;App&#125;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">Route</span> <span class="attribute">path</span>=<span class="value">"about"</span> <span class="attribute">component</span>=<span class="value">&#123;About&#125;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">Route</span> <span class="attribute">path</span>=<span class="value">"inbox"</span> <span class="attribute">component</span>=<span class="value">&#123;Inbox&#125;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">Route</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">Router</span>&gt;</span></span><br><span class="line">), document.body)</span><br></pre></td></tr></table></figure></p>
+<p><code>React Router</code>知道哪种<code>URL</code>规则下，渲染哪个组件到页面上，不需要我们自己在做任何的判断。<br>例如：<code>/about</code>这种URL规则，会被构建成<code>&lt;App&gt;&lt;About /&gt;&lt;/App&gt;</code><br>在<code>React Router</code>内部，会把<code>&lt;Route&gt;</code>标签层级转换成路由配置。如果你不喜欢<code>jsx</code>的这种写法，也可以使用对象的形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = &#123;</span><br><span class="line">  path: <span class="string">'/'</span>,</span><br><span class="line">  component: App,</span><br><span class="line">  childRoutes: [</span><br><span class="line">    &#123; path: <span class="string">'about'</span>, component: About &#125;,</span><br><span class="line">    &#123; path: <span class="string">'inbox'</span>, component: Inbox &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render(<span class="xml"><span class="tag">&lt;<span class="title">Router</span> <span class="attribute">routes</span>=<span class="value">&#123;routes&#125;</span> /&gt;</span>, document.body)</span></span><br></pre></td></tr></table></figure>
+<h1 id="添加更多的视图">添加更多的视图</h1><p>OK，现在在<code>inbox</code>路由下嵌套一个<code>messages</code>子路由，<br>首先需要添加一个新的Message组件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Message = React.createClass(&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="title">h3</span>&gt;</span>Message<span class="tag">&lt;/<span class="title">h3</span>&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span></span><br></pre></td></tr></table></figure></p>
+<p>然后在原有的<code>inbox</code>路由下面为 <code>Message</code> 组件添加新的路由，这样就可以得到嵌套的组件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Inbox = React.createClass(&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">h2</span>&gt;</span>Inbox<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">        &#123;/* 渲染子组件 */&#125;</span><br><span class="line">        &#123;this.props.children&#125;</span><br><span class="line">      <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    )</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">render((</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="title">Router</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">Route</span> <span class="attribute">path</span>=<span class="value">"/"</span> <span class="attribute">component</span>=<span class="value">&#123;App&#125;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">Route</span> <span class="attribute">path</span>=<span class="value">"about"</span> <span class="attribute">component</span>=<span class="value">&#123;About&#125;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">Route</span> <span class="attribute">path</span>=<span class="value">"inbox"</span> <span class="attribute">component</span>=<span class="value">&#123;Inbox&#125;</span>&gt;</span></span><br><span class="line">        &#123;/* 在这里加入要嵌套的视图 */&#125;</span><br><span class="line">        &#123;/* render the stats page when at `/inbox` */&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="title">IndexRoute</span> <span class="attribute">component</span>=<span class="value">&#123;InboxStats&#125;</span>/&gt;</span></span><br><span class="line">        &#123;/* 渲染message组件  /inbox/messages/123 */&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="title">Route</span> <span class="attribute">path</span>=<span class="value">"messages/:id"</span> <span class="attribute">component</span>=<span class="value">&#123;Message&#125;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">Route</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">Route</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">Router</span>&gt;</span></span><br><span class="line">)</span>, <span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure></p>
+<p>访问<code>inbox/messages/12345</code>会匹配新加的路由，<code>App-&gt;Inbox-&gt;Message</code>,路由层级：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;App&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="title">Inbox</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">Message</span> <span class="attribute">params</span>=<span class="value">&#123;</span> &#123;<span class="attribute">id:</span> '<span class="attribute">12345</span>'&#125; &#125; /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">Inbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">App</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>访问<code>/inbox</code>，路由层级：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;App&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="title">Inbox</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">InboxStats</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">Inbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">App</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h1 id="获取参数">获取参数</h1><p>当我们访问<code>inbox/messages/12345</code>的时候，我们需要获取到相应的参数，然后从服务器获取对应的数据。当视图渲染的时候，路由组件会注入一些有用的属性到组件上，特别是一些从URL动态获取的参数信息，在我们这个示例里是：<code>id</code><br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Message = React.createClass(&#123;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="comment">// from the path `/inbox/messages/:id`</span></span><br><span class="line">    <span class="keyword">const</span> id = <span class="keyword">this</span>.props.params.id</span><br><span class="line"></span><br><span class="line">    fetchMessage(id, <span class="function"><span class="keyword">function</span> <span class="params">(err, message)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123; message: message &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>你也可以通过查询串来获取参数，假如我们在浏览器里面访问<code>/foo?bar=baz</code>这个路由,在你的组件中可以通过<code>this.props.location.query.bar</code>获取<code>bar</code>的值<code>baz</code>。</p>
+<h1 id="总结">总结</h1><p><code>React Router</code>基本用法大概就这么多,一个应用往往是各种组件各种嵌套，搞明白了<code>React Router</code>，就可以很轻松的玩转路由。</p>
+
+      
+
+
+    </div>
+
+    
+  </div>
+
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/archives/git.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git指令速查</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="react-router" data-title="react-router的基本用法" data-url="http://reeoo.co/archives/react-router.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"reeooco"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+    <div class="foot_sponsor">
+        <a href="https://www.upyun.com/">
+            <img src="http://upfiles.b0.upaiyun.com/logo/180x90.png" style="width:90px;height: 45px;" alt="又拍云存储">
+            <em>又拍提供存储</em>
+        </a>
+        <a href="http://hexo.io">
+            <img src="http://reeooco.b0.upaiyun.com/common/hexo.svg" alt="hexo" style="width:40px;height: 40px;">
+            <em style="display: block;margin-top:5px;">hexo强力驱动</em>
+        </a>
+    </div>
+    <div class="copyright">&copy; 2015 Reeoo</div>
+    <div class="beian">土星 ICP备00000001号-1</div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<a id="totop">返回顶部</a>
+
+
+
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
