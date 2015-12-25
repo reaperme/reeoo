@@ -5,17 +5,60 @@
   <meta name="baidu-site-verification" content="7Id75D7BP2" />
   <meta name="baidu_union_verify" content="3d4a8e490f086a4deb5c4f1b03c65138">
   
-  <title>Reeoo&#39;s Blog</title>
+  <title>mongodb常用操作命令 | Reeoo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Reeoo&apos;s Blog, Reeoo的博客,专注于web前端技术和知识分享的个人博客网站。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Reeoo's Blog">
-<meta property="og:url" content="http://reeoo.co/index.html">
+  <meta name="description" content="这几天在研究thinkjs和mongodb，做个记录，方便以后查看。
+
+mongodb启动1mongod --dbpath ../../../data/db
+mongo常用命令
+切换. 创建数据库
+1use databasename;
+当创建一个collection的时候会自动创建当前数据库
+
+查询所有数据库
+1show dbs;
+
+删除当前使用数据库
+1db.dropDatabase();
+
+查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb常用操作命令">
+<meta property="og:url" content="http://reeoo.co/archives/mongodb.html">
 <meta property="og:site_name" content="Reeoo's Blog">
-<meta property="og:description" content="Reeoo&apos;s Blog, Reeoo的博客,专注于web前端技术和知识分享的个人博客网站。">
+<meta property="og:description" content="这几天在研究thinkjs和mongodb，做个记录，方便以后查看。
+
+mongodb启动1mongod --dbpath ../../../data/db
+mongo常用命令
+切换. 创建数据库
+1use databasename;
+当创建一个collection的时候会自动创建当前数据库
+
+查询所有数据库
+1show dbs;
+
+删除当前使用数据库
+1db.dropDatabase();
+
+查">
+<meta property="og:updated_time" content="2015-12-25T11:09:37.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Reeoo's Blog">
-<meta name="twitter:description" content="Reeoo&apos;s Blog, Reeoo的博客,专注于web前端技术和知识分享的个人博客网站。">
+<meta name="twitter:title" content="mongodb常用操作命令">
+<meta name="twitter:description" content="这几天在研究thinkjs和mongodb，做个记录，方便以后查看。
+
+mongodb启动1mongod --dbpath ../../../data/db
+mongo常用命令
+切换. 创建数据库
+1use databasename;
+当创建一个collection的时候会自动创建当前数据库
+
+查询所有数据库
+1show dbs;
+
+删除当前使用数据库
+1db.dropDatabase();
+
+查">
   
     <link rel="alternative" href="/atom.xml" title="Reeoo&#39;s Blog" type="application/atom+xml">
   
@@ -179,9 +222,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-mongodb" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-mongodb" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/archives/mongodb.html" class="article-date">
@@ -197,16 +238,36 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/mongodb.html">mongodb常用操作命令</a>
+    <h1 class="article-title" itemprop="name">
+      mongodb常用操作命令
     </h1>
   
 
       </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/javascript/">javascript</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
     
     <div class="article-entry" itemprop="articleBody">
 		<!-- 文章目录生成 -->
+		<!---->
+		<!--<div id="toc" class="toc-article">-->
+			<!--<strong class="toc-title">文章目录</strong>-->
+			<!--<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mongodb启动"><span class="toc-number">1.</span> <span class="toc-text">mongodb启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mongo常用命令"><span class="toc-number">2.</span> <span class="toc-text">mongo常用命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Collection相关"><span class="toc-number">3.</span> <span class="toc-text">Collection相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用方法"><span class="toc-number">3.1.</span> <span class="toc-text">常用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用户相关"><span class="toc-number">4.</span> <span class="toc-text">用户相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查询"><span class="toc-number">5.</span> <span class="toc-text">查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#索引"><span class="toc-number">6.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改-_添加-_删除集合数据"><span class="toc-number">7.</span> <span class="toc-text">修改. 添加. 删除集合数据</span></a></li></ol>-->
+		<!--</div>-->
 		<!---->
       
         <blockquote>
@@ -401,656 +462,61 @@
     </div>
 
     
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
   </div>
+
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/archives/react-router.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react-router的基本用法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
 
 
-
-
-
-
-
-  
-    <article id="post-react-router" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/react-router.html" class="article-date">
-  	<time datetime="2015-12-24T07:49:19.000Z" itemprop="datePublished">2015-12-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/react-router.html">react-router的基本用法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <h1 id="概览">概览</h1><blockquote>
-<p>本文基于<code>React Router v1.03</code>版本。</p>
-</blockquote>
-<p><code>React Router</code>是一个为<code>React</code>设计的强大的路由库。可以帮助我们快速的实现路由功能，包括<code>URL</code>和<code>React components</code>之间的同步映射关系。<br>在解释<code>React Router</code>如何使用之前，我们先来看看在不使用<code>React Router</code>的情况下，是怎么样的，接下来的所有例子中都将使用<code>ES2015</code>语法和语言特性。<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-router/">react-router</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="mongodb" data-title="mongodb常用操作命令" data-url="http://reeoo.co/archives/mongodb.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"reeooco"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
-	</div>
 
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/react-router.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/git.html" class="article-date">
-  	<time datetime="2015-12-17T14:52:59.000Z" itemprop="datePublished">2015-12-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/git.html">git指令速查</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <p>用<code>git</code>也有一年多了，但是有些命令始终是记不住，或者是时间长不用又忘了，做个记录，方便查阅。<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/webtools/">webtools</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/git.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Object-and-Function" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/Object-and-Function.html" class="article-date">
-  	<time datetime="2015-12-13T13:58:59.000Z" itemprop="datePublished">2015-12-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/Object-and-Function.html">Object和Function那点破事</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <p>看到这样一道题目：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br></pre></td></tr></table></figure></p>
-<p><code>f.a</code>和<code>f.b</code>各是多少？为什么？<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原型链/">原型链</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/javascript/">javascript</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/Object-and-Function.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-mobileweb" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/mobileweb.html" class="article-date">
-  	<time datetime="2015-10-11T06:37:55.000Z" itemprop="datePublished">2015-10-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/mobileweb.html">移动Web常用知识收集</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <p>本文主要收集了一些移动端常用的知识，内容来自于互联网，如有雷同，不甚荣幸。<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/meta/">meta</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/mobile/">mobile</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/mobileweb.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-ssh-login-ignore-known-hosts" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/ssh-login-ignore-known-hosts.html" class="article-date">
-  	<time datetime="2015-08-22T13:33:11.000Z" itemprop="datePublished">2015-08-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/ssh-login-ignore-known-hosts.html">ssh登录之忽略known_hosts文件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <p>今天在开发导游项目的时候遇到一个问题，在临下班的时候，我准备把所有代码都push一下，准备回家，结果发现用<code>tortoisegit</code>死活不让<code>push</code>，<code>pull</code>也报错，<code>tortoisegit</code>报的错也看不出到底是哪里出了错，呵呵哒。</p>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/questions/">questions</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/ssh-login-ignore-known-hosts.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-webstorm-scss-watcher" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/webstorm-scss-watcher.html" class="article-date">
-  	<time datetime="2015-07-02T02:31:25.000Z" itemprop="datePublished">2015-07-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/webstorm-scss-watcher.html">在Webstorm中配置Compass Watcher</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <p>结合<code>Webstorm</code>和<code>Compass</code>，完成自动编译<code>Scss</code>文件为<code>css</code>，做个简单的记录。<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Compass/">Compass</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebStorm/">WebStorm</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/webtools/">webtools</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/webstorm-scss-watcher.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-AboutHexo" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/AboutHexo.html" class="article-date">
-  	<time datetime="2015-06-29T14:58:59.000Z" itemprop="datePublished">2015-06-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/AboutHexo.html">关于hexo的一些问题记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <h1 id="Bug:「warning:_LF_will_be_replaced_by_CRLF」">Bug:「warning: LF will be replaced by CRLF」</h1><p>在<code>hexo deploy</code>时，<br>有时会出现这个提示信息<code>warning: LF will be replaced by CRLF</code>，<br>虽然不影响使用，但是看起来挺乱糟糟的，挺烦心的啊，可以使用如下方法把它干掉：<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/hexo/">hexo</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/AboutHexo.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-gulpjs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/gulpjs.html" class="article-date">
-  	<time datetime="2015-06-26T02:02:46.000Z" itemprop="datePublished">2015-06-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/gulpjs.html">Gulp简易入坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <p>在发现这个东西之前，前端构建我一直在用<code>grunt</code>，有一天同学给我说用<code>gulp</code>吧，比<code>grunt</code>更好用，于是乎我决定研究一番，看看这货到底是个什么好东西。<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulpjs/">gulpjs</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/webtools/">webtools</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/gulpjs.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-BrowserSync" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/archives/BrowserSync.html" class="article-date">
-  	<time datetime="2015-06-25T10:33:30.000Z" itemprop="datePublished">2015-06-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/archives/BrowserSync.html">BrowserSync前端测试利器</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-		<!-- 文章目录生成 -->
-		<!---->
-      
-        <p><a href="http://www.browsersync.io/"><code>BrowserSync</code></a>是一个同步多浏览器页面测试工具。有了它，你在<code>IDE</code>里面修改完文件，页面就会同步刷新，你再也不需要手动去按F5刷新啦~<br>
-      
-
-
-    </div>
-
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BrowserSync/">BrowserSync</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/webtools/">webtools</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/archives/BrowserSync.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-
-    </div>
-    
-  </div>
-
-  
-</article>
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
 </div>
