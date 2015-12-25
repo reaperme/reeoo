@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Hello, I'm Reeoo]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://reeoo.co/"/>
-  <updated>2015-12-25T11:09:37.142Z</updated>
+  <updated>2015-12-25T11:12:26.039Z</updated>
   <id>http://reeoo.co/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://reeoo.co/archives/mongodb.html"/>
     <id>http://reeoo.co/archives/mongodb.html</id>
     <published>2015-12-25T07:49:19.000Z</published>
-    <updated>2015-12-25T11:09:37.142Z</updated>
+    <updated>2015-12-25T11:12:26.039Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>这几天在研究<code>thinkjs</code>和<code>mongodb</code>，做个记录，方便以后查看。</p>
 </blockquote>
@@ -29,6 +29,9 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">databasename</span>;</span><br></pre></td></tr></table></figure>
 <p>当创建一个<code>collection</code>的时候会自动创建当前数据库</p>
 </li>
+</ol>
+<a id="more"></a>
+<ol>
 <li><p>查询所有数据库</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">show</span> dbs;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -210,7 +213,14 @@
     <![CDATA[<blockquote>
 <p>这几天在研究<code>thinkjs</code>和<code>mongodb</code>，做个记录，方便以后查看。</p>
 </blockquote>
-<h1 id="mongodb启动">mongodb启动</h1><figure clas]]>
+<h1 id="mongodb启动">mongodb启动</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath ../../../data/db</span><br></pre></td></tr></table></figure>
+<h1 id="mongo常用命令">mongo常用命令</h1><ol>
+<li><p>切换. 创建数据库</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">databasename</span>;</span><br></pre></td></tr></table></figure>
+<p>当创建一个<code>collection</code>的时候会自动创建当前数据库</p>
+</li>
+</ol>]]>
+    
     </summary>
     
       <category term="mongodb" scheme="http://reeoo.co/tags/mongodb/"/>
