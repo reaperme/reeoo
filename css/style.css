@@ -195,7 +195,7 @@ a {
   }
 }
 body {
-  cursor: url("http://reeooco.b0.upaiyun.com/common/hand.cur"), auto;
+  cursor: url("http://img.reeoo.me/common/hand.cur"), auto;
 }
 #container {
   position: relative;
@@ -2494,7 +2494,7 @@ pre .javascript .function {
   text-indent: -9999px;
   z-index: 200;
   cursor: pointer;
-  background: transparent url("http://reeooco.b0.upaiyun.com/common/back-to-top.png") no-repeat;
+  background: transparent url("http://img.reeoo.me/common/back-to-top.png") no-repeat;
 }
 #totop:hover {
   background-position: -40px 0px;
